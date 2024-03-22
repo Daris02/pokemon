@@ -20,7 +20,7 @@ function PokemonDetails({ id }: { id: string }) {
     return (
         <div className="p-12">
             <h1 className="text-2xl">{details?.name}</h1>
-            <div className="w-52 overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-32">
+            <div className="w-52 overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-52">
                 <img
                     src={details?.sprites.front_default}
                     alt="img failed load"
