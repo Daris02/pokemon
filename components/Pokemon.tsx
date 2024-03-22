@@ -1,31 +1,31 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import React, { useEffect, useState } from 'react'
 import data from '../utils/data/api'
 import { PokemonData, PokemonDetail } from '@/utils/types/pokemonData';
+import { useRouter } from 'next/navigation';
 
 
 function Pokemon({ pokemon }: {pokemon: PokemonData}) {
     const [details, setDetails] = useState<PokemonDetail>();
+    const router = useRouter();
 
     useEffect(() => {
         function updateData() {
-            data.getPokemon(pokemon.url).then((res) => {                
-                const response: PokemonDetail = {
-                    sprites: {
-                        front_default: res.sprites.front_default
-                    },
-                    name: res.name,
-                    height: res.height,
-                    weight: res.weight,
-                    type: res.type,
-                    order: res.order
-                };
-                setDetails(response);
+            data.getPokemon(pokemon.url).then((res) => {;
+                setDetails(res);
             })
         };
         updateData();
-    }, []);
+    }, [pokemon]);
+
+    function goToDetails() {
+        const segments = pokemon.url.split("/");
+        const urlLocal = location.href.split("/");
+        const id = segments[6];
+        return router.push(`/${urlLocal[3]}/${id}`);
+    }
 
     return (
         <>        
@@ -40,7 +40,7 @@ function Pokemon({ pokemon }: {pokemon: PokemonData}) {
                 <div>
                     <h3 className="text-sm">{details?.name}</h3>
                 </div>
-                <button>Details</button>
+                <button onClick={() => goToDetails()}>Details</button>
             </div>
         </>
     )
