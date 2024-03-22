@@ -29,7 +29,7 @@ function Pokemon({ pokemon }: {pokemon: PokemonData}) {
 
     return (
         <>        
-            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80">
                 <img
                     src={details?.sprites.front_default}
                     alt="img failed load"
@@ -38,9 +38,13 @@ function Pokemon({ pokemon }: {pokemon: PokemonData}) {
             </div>
             <div className="mt-4 flex justify-between">
                 <div>
-                    <h3 className="text-sm">{details?.name}</h3>
+                    <h3 className="text-xl">{details?.name}</h3>
                 </div>
-                <button onClick={() => goToDetails()}>Details</button>
+                <button 
+                    className='rounded-lg px-2 py-1 bg-gray-600 text-gray-100 hover:bg-gray-700 duration-300'
+                    onClick={() => goToDetails()}
+                    > Details
+                </button>
             </div>
         </>
     )
