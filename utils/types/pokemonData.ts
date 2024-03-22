@@ -8,6 +8,11 @@ export type PokemonDetail = {
     name: string;
     height: number;
     weight: number;
-    type: string;
+    types: Slot[];
     order: number
+}
+
+type Slot = {
+    slot: number;
+    type: { name: string, url: string};
 }
